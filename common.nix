@@ -23,7 +23,7 @@ with lib;
   config = {
     # Experimental Features
     nix.settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [ "nix-command" "flakes" ];
     };
 
     security.polkit.enable = true;
@@ -58,11 +58,11 @@ with lib;
       enable = true;
       settings = {
         default_session.command = ''
-        ${pkgs.greetd.tuigreet}/bin/tuigreet \
-          --time \
-          --asterisks \
-          --user-menu \
-          --cmd bash
+          ${pkgs.greetd.tuigreet}/bin/tuigreet \
+            --time \
+            --asterisks \
+            --user-menu \
+            --cmd bash
         '';
       };
     };

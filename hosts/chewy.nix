@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "thunderbolt" "xhci_pci" "nvme" "ahci" "usb_storage" "uas" "usbhid" "sd_mod" ];
@@ -14,18 +15,19 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/7143bf60-6dc6-4b66-a389-d086d5382b6d";
+    {
+      device = "/dev/disk/by-uuid/7143bf60-6dc6-4b66-a389-d086d5382b6d";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/902C-9BBB";
+    {
+      device = "/dev/disk/by-uuid/902C-9BBB";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/4b1a1dc6-e1b7-4da8-a39d-7623c55eb7cf"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/4b1a1dc6-e1b7-4da8-a39d-7623c55eb7cf"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -38,7 +40,7 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true;

@@ -9,9 +9,10 @@
     nixosConfigurations = {
       "chewy" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [       
+        modules = [
           ./hosts/chewy.nix
-          ./common.nix {
+          ./common.nix
+          {
             hostname = "chewy";
           }
           ./xserver.nix
@@ -20,9 +21,10 @@
 
       "mort" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [       
+        modules = [
           ./hosts/mort.nix
-          ./common.nix {
+          ./common.nix
+          {
             hostname = "mort";
           }
           ./xserver.nix
