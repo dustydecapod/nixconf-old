@@ -10,6 +10,14 @@
     spotify
     vscode
     zsh
+    (vscode-with-extensions.override {
+    vscodeExtensions = with vscode-extensions; [
+      bbenoist.nix
+      ms-python.python
+      jnoortheen.nix-ide
+    ];
+  })
     ];
   };
+  
 }
