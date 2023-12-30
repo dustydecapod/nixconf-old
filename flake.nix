@@ -10,7 +10,7 @@
       "chewy" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [       
-          ./hardware/chewy.nix
+          ./hosts/chewy.nix
           ./common.nix {
             hostname = "chewy";
           }
@@ -21,7 +21,7 @@
       "mort" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [       
-          ./hardware/mort.nix
+          ./hosts/mort.nix
           ./common.nix {
             hostname = "mort";
           }
