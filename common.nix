@@ -27,6 +27,8 @@ with lib;
     };
 
     security.polkit.enable = true;
+    virtualisation.docker.enable = true;
+    virtualisation.docker.enableNvidia = true;
 
     # Bootloader.
     boot.loader.systemd-boot.enable = true;
@@ -84,6 +86,14 @@ with lib;
       git
       curl
     ];
+
+    networking.firewall = {
+      enable = true;
+      allowedTCPPorts = [ 7860 ];
+      allowedUDPPortRanges = [
+      ];
+
+    };
 
     programs.mtr.enable = true;
     system.stateVersion = "23.11"; # Did you read the comment?

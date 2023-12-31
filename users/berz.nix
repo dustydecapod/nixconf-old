@@ -3,7 +3,7 @@
   users.users.berz = {
     isNormalUser = true;
     description = "Ber Zoidberg";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       firefox
       discord
