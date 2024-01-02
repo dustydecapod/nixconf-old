@@ -11,6 +11,7 @@
       vscode
       zsh
       nixpkgs-fmt
+      easyeffects
       (vscode-with-extensions.override {
         vscodeExtensions = with vscode-extensions; [
           bbenoist.nix

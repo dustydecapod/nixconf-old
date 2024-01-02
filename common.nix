@@ -25,7 +25,7 @@ with lib;
     nix.settings = {
       experimental-features = [ "nix-command" "flakes" ];
     };
-
+    
     security.polkit.enable = true;
     virtualisation.docker.enable = true;
     virtualisation.docker.enableNvidia = true;
@@ -33,7 +33,7 @@ with lib;
     # Bootloader.
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
-
+    systemd.services."getty@".serviceConfig.Type = "exec";
     networking.hostName = "${config.hostname}";
     networking.networkmanager.enable = true;
 
@@ -53,20 +53,6 @@ with lib;
       LC_PAPER = "en_US.UTF-8";
       LC_TELEPHONE = "en_US.UTF-8";
       LC_TIME = "en_US.UTF-8";
-    };
-
-    # Greetd!
-    services.greetd = {
-      enable = true;
-      settings = {
-        default_session.command = ''
-          ${pkgs.greetd.tuigreet}/bin/tuigreet \
-            --time \
-            --asterisks \
-            --user-menu \
-            --cmd bash
-        '';
-      };
     };
 
     # Allow unfree packages
@@ -89,7 +75,7 @@ with lib;
 
     networking.firewall = {
       enable = true;
-      allowedTCPPorts = [ 7860 ];
+      allowedTCPPorts = [ 7860 3000 ];
       allowedUDPPortRanges = [
       ];
 
