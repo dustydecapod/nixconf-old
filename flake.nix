@@ -32,6 +32,18 @@
           ./xserver.nix
         ];
       };
+
+      "haunter" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/haunter/hardware.nix
+          ./common.nix
+          {
+            hostname = "haunter";
+          }
+          ./xserver.nix
+        ];
+      };
     };
   };
 }
