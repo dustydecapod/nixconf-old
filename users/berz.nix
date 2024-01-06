@@ -21,5 +21,5 @@
       })
     ];
   };
-
+  programs.steam.enable = true;
 }
